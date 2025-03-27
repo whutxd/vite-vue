@@ -74,7 +74,7 @@ const count = ref(0)
 
 
   
-  <h1>{{ msg }}</h1>
+  <h3>{{ msg }}</h3>
 
   <p class="read-the-docs">Click on the Link and Have Fun！</p>
 </template>
