@@ -16,7 +16,7 @@ const count = ref(0)
     <!-- 导航链接 -->
     <div class="nav-link">
       <a href="http://fdmai.top/" class="link" target="_blank">
-        <h1>FDM AI平台</h1>
+        <h2>FDM AI平台</h2>
       </a>
     </div>
 
@@ -24,7 +24,7 @@ const count = ref(0)
     <!-- 导航链接 -->
     <div class="nav-link">
       <a href="https://navi.fdmgpt.top" class="link" target="_blank">
-        友情链接: FDM AI导航站
+        <h2>友情链接: FDM AI导航站</h2>
       </a>
     </div>
 
