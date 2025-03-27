@@ -10,7 +10,6 @@ const count = ref(0)
 
 <template>
   <h1>{{ msg }}</h1>
-  <h1>这里是临时添加的内容，测试更新修改代码</h1>
 
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
