@@ -12,16 +12,15 @@ const count = ref(0)
 
   <div class="ai-tools">
     <!-- 标题部分 -->
-    <h1 class="title">FDM AI平台</h1>
+    <h1 class="title">FDM AI导航站</h1>
     <!-- 导航链接 -->
     <div class="nav-link">
       <a href="http://fdmai.top/" class="link" target="_blank">
-        FDM AI平台
+        <h3>FDM AI平台</h3>
       </a>
     </div>
 
-    <!-- 标题部分 -->
-    <h1 class="title">数字资源库</h1>
+
     <!-- 导航链接 -->
     <div class="nav-link">
       <a href="https://navi.fdmgpt.top" class="link" target="_blank">
