@@ -9,6 +9,32 @@ const count = ref(0)
 </script>
 
 <template>
+
+
+
+  <div class="ai-tools">
+    <!-- 标题部分 -->
+    <h1 class="title">数字资源库</h1>
+
+    <!-- 导航链接 -->
+    <div class="nav-link">
+      <a href="https://navi.fdmgpt.top" class="link" target="_blank">
+        友情链接: FDM AI导航站
+      </a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  
   <h1>{{ msg }}</h1>
 
   <div class="card">
