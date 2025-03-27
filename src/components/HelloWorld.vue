@@ -16,7 +16,7 @@ const count = ref(0)
     <!-- 导航链接 -->
     <div class="nav-link">
       <a href="http://fdmai.top/" class="link" target="_blank">
-        <h3>FDM AI平台</h3>
+        <h1>FDM AI平台</h1>
       </a>
     </div>
 
