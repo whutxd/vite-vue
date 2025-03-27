@@ -118,7 +118,7 @@ h2 {
     padding: 10px 20px; /* 添加内边距 */
     background-color: #007bff; /* 背景颜色 */
     color: white; /* 字体颜色 */
-    border-radius: 5px; /* 圆角 */
+    border-radius: 15px; /* 圆角 */
     transition: transform 0.3s; /* 添加平滑过渡效果 */
 }
   
