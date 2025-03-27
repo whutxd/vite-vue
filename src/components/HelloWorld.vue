@@ -12,8 +12,16 @@ const count = ref(0)
 
   <div class="ai-tools">
     <!-- 标题部分 -->
-    <h1 class="title">数字资源库</h1>
+    <h1 class="title">FDM AI平台</h1>
+    <!-- 导航链接 -->
+    <div class="nav-link">
+      <a href="http://fdmai.top/" class="link" target="_blank">
+        FDM AI平台
+      </a>
+    </div>
 
+    <!-- 标题部分 -->
+    <h1 class="title">数字资源库</h1>
     <!-- 导航链接 -->
     <div class="nav-link">
       <a href="https://navi.fdmgpt.top" class="link" target="_blank">
@@ -22,20 +30,17 @@ const count = ref(0)
     </div>
   </div>
 
-  <!-- 主体内容容器 -->
-  <div class="container">
-    <!-- 左侧菜单 -->
-    <div class="sidebar">
-      <div v-for="menu in menus" :key="menu.id" :class="['menu-item', { active: currentMenu === menu.id }]"
-        @click="handleMenuClick(menu.id)">
 
-        <el-icon class="mr-2">
-          <component :is="menu.icon" />
-        </el-icon>
 
-        <span class="menu-text">{{ menu.name }}</span>
-      </div>
-    </div>
+
+
+
+
+
+
+
+
+    
   </div>
 
 
