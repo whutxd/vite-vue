@@ -11,7 +11,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <!-- <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" /> -->
     <!-- </a> -->
     
-    <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    <img src="./assets/方正logo_透明底色.png" class="logo vue" alt="Vue logo" />
     
   </div>
   <HelloWorld msg="Developed By XiaoDong" />
