@@ -12,7 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <!-- </a> -->
     
     <!-- <img src="./assets/方正logo_透明底色.png" class="logo vue" alt="Vue logo" /> -->
-    <img src="./assets/方正logo_透明底色.png" class="logo vue" alt="Vue logo" width="150" height="auto" />
+    <img src="./assets/方正logo_透明底色.png" class="logo vue" alt="Vue logo" width="200" />
 
     
   </div>
