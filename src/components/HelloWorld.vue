@@ -111,4 +111,8 @@ const count = ref(0)
 .read-the-docs {
   color: #888;
 }
+
+a:hover {
+  transform: scale(1.1); /* 鼠标悬停时放大 */
+}
 </style>
