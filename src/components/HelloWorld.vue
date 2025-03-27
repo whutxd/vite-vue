@@ -112,6 +112,16 @@ const count = ref(0)
   color: #888;
 }
 
+h2 {
+    display: inline-block; /* 使链接能够设置宽高 */
+    text-decoration: none; /* 去掉下划线 */
+    padding: 10px 20px; /* 添加内边距 */
+    background-color: #007bff; /* 背景颜色 */
+    color: white; /* 字体颜色 */
+    border-radius: 5px; /* 圆角 */
+    transition: transform 0.3s; /* 添加平滑过渡效果 */
+}
+  
 h2:hover {
   transform: scale(1.1); /* 鼠标悬停时放大 */
 }
