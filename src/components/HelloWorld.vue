@@ -112,7 +112,7 @@ const count = ref(0)
   color: #888;
 }
 
-a:hover {
+h2:hover {
   transform: scale(1.1); /* 鼠标悬停时放大 */
 }
 </style>
