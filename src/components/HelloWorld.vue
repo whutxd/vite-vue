@@ -1,11 +1,179 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 
-defineProps({
-  msg: String,
+// 当前选中的菜单
+const currentMenu = ref('patent')
+
+// 当前查看的教程
+const currentTutorial = ref(null)
+
+// 菜单配置【方式1：icon使用Font Awesome。缺点，图标大小不太一致，不好对齐，美观度不高】
+// const menus = [
+//     { id: 'patent', name: '翻译', icon: 'fas fa-language' },    // OK：Font Awesome图标搜索：https://fontawesome.dashgame.com/
+//     { id: 'image', name: '截图', icon: 'fas fa-image' },
+//     { id: 'mindmap', name: '思维图', icon: 'fas fa-project-diagram' },
+//     { id: 'ppt', name: 'PPT', icon: 'fas fa-file-powerpoint' },
+//     { id: 'pdf', name: 'PDF', icon: 'fas fa-file-pdf' },
+//     { id: 'excel', name: 'Excel', icon: 'fas fa-file-excel' },
+//     { id: 'format', name: '格式转换', icon: 'fas fa-exchange-alt' },
+//     { id: 'ai', name: '飞书AI', icon: 'fas fa-robot' },
+//     { id: 'screen', name: '录屏', icon: 'fas fa-video' },
+//     { id: 'search', name: 'AI搜索', icon: 'fas fa-search' },
+// ]
+
+// // 菜单配置【方式2：icon使用elementplus，OK，方:2.1，使用引入函数变量】
+// // import { ElIcon } from 'element-plus';
+// import { Calendar, Search } from '@element-plus/icons-vue'
+// const menus = [
+//     { id: 'patent', name: '翻译', icon: Search },
+//     { id: 'image', name: '截图', icon: Calendar },
+//     { id: 'mindmap', name: '思维图', icon: Calendar },
+//     { id: 'ppt', name: 'PPT', icon: Calendar },
+//     { id: 'pdf', name: 'PDF', icon: Calendar },
+//     { id: 'excel', name: 'Excel', icon: Calendar },
+//     { id: 'format', name: '格式转换', icon: Calendar },
+//     { id: 'ai', name: '飞书AI', icon: Calendar },
+//     { id: 'screen', name: '录屏', icon: Calendar },
+//     { id: 'search', name: 'AI搜索', icon: Search },
+// ]
+// 菜单配置【icon使用elementplus，OK，方式2.2，使用字符串】
+const menus = [
+  { id: 'patent', name: '专利', icon: 'Operation' },
+  { id: 'standard', name: '标准', icon: 'Crop' },
+  { id: 'paper', name: '文献', icon: 'Share' },
+  { id: 'sae', name: 'SAE', icon: 'Edit' },
+  { id: 'wenku', name: '文库', icon: 'Document' },
+  // { id: 'excel', name: 'Excel', icon: 'Notebook' },
+  // { id: 'format', name: '格式转换', icon: 'RefreshRight' },  // Guide
+  // { id: 'ai', name: '飞书AI', icon: 'ChatDotRound' },
+  // { id: 'screen', name: '录屏', icon: 'VideoCamera' },
+  // { id: 'search', name: 'AI搜索', icon: 'Search' },
+]
+
+
+
+
+// 工具列表数据
+const allTools = [
+  {
+    id: 1,
+    // name: 'ChatPPT',
+    // logo: '/chatppt-logo.png',
+    // logo: '/images/fdmai_avatar.png',
+    // image: '/images/digital resource library/专利/logo-chatPPT.jpg',   // 注：使用相对路径vite工具时，图片位于public文件夹
+    // description: 'AI生成PPT内容和格式，支持一键生成精美PPT',
+    // rating: 5,
+    // link: '#',
+    // link: 'https://chat-ppt.com/',
+    // categories: ['ppt', 'ai'],
+    categories: ['patent'],
+
+  },
+  {
+    id: 2,
+    // name: 'Gamma',
+    // image: '/images/AIEfficiencyTool/logo-Gamma.jpg',
+    // description: '智能PPT生成工具，让演示文稿制作更简单',
+    // rating: 3,
+    // link: '#',
+    // link: 'https://gamma.app/',
+    // categories: ['ppt', 'ai'],
+    categories: ['standard'],
+  },
+  {
+    id: 3,
+    // name: 'Gamma',
+    // image: '/images/AIEfficiencyTool/logo-Gamma.jpg',
+    // description: '智能PPT生成工具，让演示文稿制作更简单',
+    // rating: 3,
+    // link: '#',
+    // link: 'https://gamma.app/',
+    // categories: ['ppt', 'ai'],
+    categories: ['paper'],
+  },
+  {
+    id: 4,
+    // name: 'Gamma',
+    // image: '/images/AIEfficiencyTool/logo-Gamma.jpg',
+    // description: '智能PPT生成工具，让演示文稿制作更简单',
+    // rating: 3,
+    // link: '#',
+    // link: 'https://gamma.app/',
+    // categories: ['ppt', 'ai'],
+    categories: ['sae'],
+  },
+  {
+    id: 5,
+    // name: 'Gamma',
+    // image: '/images/AIEfficiencyTool/logo-Gamma.jpg',
+    // description: '智能PPT生成工具，让演示文稿制作更简单',
+    // rating: 3,
+    // link: '#',
+    // link: 'https://gamma.app/',
+    // categories: ['ppt', 'ai'],
+    categories: ['wenku'],
+  },
+
+
+]
+
+// 监听菜单变化
+// watch(currentMenu, (newMenu) => {
+//     // 无论当前是否在查看教程，都返回到工具列表
+//     currentTutorial.value = null
+// })
+
+// 计算属性：根据当前菜单过滤工具
+const filteredTools = computed(() => {
+  return allTools.filter(tool => tool.categories.includes(currentMenu.value))
 })
+// const filteredTools = computed(function() {
+//     return allTools.filter(function(tool123) {    // tool123 是 filter 方法的回调函数的参数。filter 方法会自动将数组中的每一个元素传递给回调函数，因此 tool123 代表 allTools 数组中的每一个工具对象。
+//         return tool123.categories.includes(currentMenu.value);
+//     });
+// });
 
-const count = ref(0)
+// 计算属性：获取当前菜单对应的标签
+// const currentTags = computed(() => {
+//   return tagsByMenu[currentMenu.value] || []
+// })
+// const currentTags = () => {
+//   console.log('currentTags = tagsByMenu[currentMenu.value]:', tagsByMenu[currentMenu.value])
+//   return tagsByMenu[currentMenu.value] || []
+// }
+
+// 显示教程的方法
+const showTutorial = (tool) => {
+  currentTutorial.value = tool
+  if (!tool.categories.includes(currentMenu.value)) {
+    currentMenu.value = tool.categories[0]
+  }
+}
+
+// 返回列表的方法
+const backToList = () => {
+  currentTutorial.value = null
+}
+
+// 处理菜单点击
+const handleMenuClick = (menuId) => {
+  // 更新当前菜单
+  currentMenu.value = menuId
+  // 清除当前教程显示
+  currentTutorial.value = null
+}
+
+
+
+// 获取工具logo的路径处理
+// 定义获取图像 URL 的方法
+const getImageUrl = (path) => {
+  return new URL(path, import.meta.url).href;  // import.meta.url 是一个特殊的元属性，它包含当前模块的 URL。通过将相对路径 path 与 import.meta.url 结合，new URL 构造函数能够生成一个绝对 URL。最后，函数返回生成的 URL 的 href 属性，这个属性包含了图像的完整 URL 字符串。
+};
+
+
+
+
 </script>
 
 <template>
